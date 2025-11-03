@@ -2,10 +2,11 @@ import { createBrowserRouter } from "react-router";
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import Explore from "./pages/explore/Explore";
-import Detail from "./pages/Detail";
+import Detail from "./pages/details/Details";
+import Saved from "./pages/saved/Saved";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import { getUser, getUsers } from "./utilities/typicode";
+import { getMovieDetails } from "./utilities/movieApi";
 import Loading from "./Components/Loading";
 import { ErrorBoundary } from "./Components/Error";
 
@@ -22,17 +23,20 @@ const router = createBrowserRouter([
             },
             {
                 path: "explore",
-                element: <Explore />,
-                loader: getUsers,
+                element: <Explore />
             },
             {
                 path: "explore/:id",
                 element: <Detail />,
-                loader: getUser
+                loader: getMovieDetails
             },
             {
                 path: "contact",
                 element: <Contact />
+            },
+            {
+                path: "saved",
+                element: <Saved />
             },
             {
                 path: "*",

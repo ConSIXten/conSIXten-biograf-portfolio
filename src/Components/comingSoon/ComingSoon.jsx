@@ -49,10 +49,10 @@ export default function ComingSoon() {
             <div className="movies-scroll-container">
                 {movies.map((movie) => (
                     <div key={movie.id} className="movie-card">
-                        <div className="movie-poster">
+                        <div className="coming-soon-poster">
                             {movie.poster_path ? (
-                                <img 
-                                    src={getImageUrl(movie.poster_path, 'w500')} 
+                                <img
+                                    src={getImageUrl(movie.poster_path, 'w500')}
                                     alt={movie.title}
                                 />
                             ) : (
@@ -62,9 +62,9 @@ export default function ComingSoon() {
                         <div className="movie-info">
                             <h3 className="movie-title">{movie.title}</h3>
                             <p className="movie-date">
-                                {new Date(movie.release_date).toLocaleDateString('en-US', { 
-                                    month: 'long', 
-                                    year: 'numeric' 
+                                {new Date(movie.release_date).toLocaleDateString('en-US', {
+                                    month: 'long',
+                                    year: 'numeric'
                                 })}
                             </p>
                         </div>

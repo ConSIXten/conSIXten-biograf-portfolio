@@ -416,6 +416,10 @@
     background-color: #323542;
 }
 
+.bg-blue {
+    background-color: #5A8DEE;
+}
+
 /* Border Radius Utilities */
 .rounded-sm {
     border-radius: 8px;

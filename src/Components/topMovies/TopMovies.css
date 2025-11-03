@@ -1,4 +1,17 @@
-/* See More Link */
+/* Top Movies Section */
+.top-movies-section {
+    grid-column: fullw;
+    padding: 1.5rem 0 1.5rem 1.5rem;
+}
+
+.top-movies-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-right: 1.5rem;
+}
+
 .see-more-link {
     text-decoration: none;
 }
@@ -13,12 +26,12 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
-    padding-right: 1rem;
 }
 
 .top-movies-scroll::after {
     content: '';
-    padding-right: 0.5rem;
+    flex-shrink: 0;
+    width: 0.5rem;
 }
 
 .top-movies-scroll::-webkit-scrollbar {

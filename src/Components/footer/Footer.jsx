@@ -68,9 +68,9 @@ export default function Footer() {
                 </NavLink>
 
                 <NavLink
-                    to="/tickets"
+                    to="/saved"
                     className="nav-item"
-                    aria-label="Tickets"
+                    aria-label="Saved"
                 >
                     {({ isActive }) => (
                         <>

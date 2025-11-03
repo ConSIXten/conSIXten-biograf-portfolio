@@ -1,0 +1,88 @@
+/* Details Page */
+.details-page {
+    grid-column: fullw;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Movie Poster */
+.movie-poster-container {
+    width: 100%;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-poster {
+    width: 251px;
+    height: 370px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+/* Movie Info Section */
+.movie-info {
+    padding: 0 1.5rem 2rem;
+}
+
+.movie-title {
+    line-height: 1.2;
+}
+
+/* Director and Rating */
+.director-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.star {
+    font-size: 1rem;
+}
+
+/* Genres and Runtime Pills */
+.genres-runtime {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.genre-pill,
+.runtime-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+}
+
+/* Synopsis */
+.synopsis-text {
+    line-height: 1.6;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+/* Book Ticket Button */
+.book-ticket-btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.125rem;
+    cursor: pointer;
+    margin-top: auto;
+}
