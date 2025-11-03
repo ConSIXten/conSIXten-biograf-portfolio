@@ -13,34 +13,24 @@
     display: flex;
     gap: 1rem;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
-}
-
-.movies-scroll-container .movie-card:first-child {
-    margin-left: 0;
+    -webkit-overflow-scrolling: touch;
 }
 
 .movies-scroll-container::-webkit-scrollbar {
     display: none;
-    /* Chrome, Safari, Opera */
 }
 
 .movie-card {
-    flex: 0 0 auto;
+    flex-shrink: 0;
     width: 315px;
     scroll-snap-align: start;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.movie-card:hover {
-    transform: scale(1.02);
+    scroll-snap-stop: always;
 }
 
 .movie-poster {

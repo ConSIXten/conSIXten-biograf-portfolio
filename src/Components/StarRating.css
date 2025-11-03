@@ -1,0 +1,8 @@
+.star-rating {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    transition: transform 0.2s ease;
+}

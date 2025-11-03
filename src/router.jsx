@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Layout from "./Layout";
 import Home from "./pages/Home";
-import Explore from "./pages/Explore";
+import Explore from "./pages/explore/Explore";
 import Detail from "./pages/Detail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
