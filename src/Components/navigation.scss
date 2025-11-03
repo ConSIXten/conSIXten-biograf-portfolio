@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  padding: 10px 20px;
+  background-color: #333;
+
+  & a.active {
+    font-weight: bold;
+    text-decoration: none;
+  }
+}

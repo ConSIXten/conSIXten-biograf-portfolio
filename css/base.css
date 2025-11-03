@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    height: 10rem;
+    background-color: aquamarine;
+}
+
+main{
+    background-color: hotpink;
+}
+
+footer{
+    height: 5rem;
+    background-color: brown;
+}
+
+nav{
+    background-color: white;
+}
