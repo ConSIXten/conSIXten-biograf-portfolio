@@ -1,13 +1,12 @@
-import { Link, NavLink } from "react-router"
-
+import ComingSoon from '../Components/comingSoon/ComingSoon';
+import CinemaNearYou from '../Components/cinemaNearYou/CinemaNearYou';
 
 export default function Home() {
 
     return (
         <>
-            
-            <h1>Home</h1>
-            <Link to="/about">go to about!</Link>
+            <ComingSoon />
+            <CinemaNearYou />
         </>
     )
 }

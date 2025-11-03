@@ -1,14 +1,16 @@
-import Navigation from './Components/Navigation'
-import { Outlet } from 'react-router'
+import { Outlet, useLocation } from 'react-router'
+import HomePageHeader from './Components/header/HomePageHeader';
+import '../css/style.css'
+
 
 function App() {
- 
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
     <>
       <header>
-        <h1>My App</h1>
-        <Navigation />
+        {isHomePage && <HomePageHeader /> }
       </header>
       <main>
         <Outlet />
