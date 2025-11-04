@@ -1,0 +1,10 @@
+.tab-toggle-button {
+    border: none;
+    background-color: transparent;
+    color: #8e95a9;
+}
+
+.tab-toggle-button.active {
+    background-color: #5A8DEE;
+    color: #ffffff;
+}

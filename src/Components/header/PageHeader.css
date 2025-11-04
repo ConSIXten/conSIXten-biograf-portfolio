@@ -1,0 +1,49 @@
+.page-header {
+    background-color: #2a2d3a;
+    grid-column: fullw;
+}
+
+.page-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    flex: 1;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.back-button,
+.search-button,
+.bookmark-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+    min-width: 40px;
+}
+
+.back-button:hover,
+.search-button:hover,
+.bookmark-button:hover {
+    opacity: 0.7;
+}
+
+.back-button:active,
+.search-button:active,
+.bookmark-button:active {
+    transform: scale(0.95);
+}
