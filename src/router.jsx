@@ -3,6 +3,9 @@ import Layout from "./Layout";
 import Home from "./pages/Home";
 import Explore from "./pages/explore/Explore";
 import Detail from "./pages/details/Details";
+import Booking from "./pages/booking/Booking";
+import Payment from "./pages/payment/Payment";
+import Tickets from "./pages/tickets/Tickets";
 import Saved from "./pages/saved/Saved";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
                 path: "explore/:id",
                 element: <Detail />,
                 loader: getMovieDetails
+            },
+            {
+                path: "booking/:id",
+                element: <Booking />
+            },
+            {
+                path: "payment",
+                element: <Payment />
+            },
+            {
+                path: "tickets",
+                element: <Tickets />
             },
             {
                 path: "contact",

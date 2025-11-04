@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useLoaderData, useOutletContext } from 'react-router';
+import { useLoaderData, useOutletContext, useNavigate } from 'react-router';
 import { getImageUrl } from '../../utilities/movieApi';
 import { useBookmarks } from '../../utilities/useBookmarks';
 import './Details.css';
 
 export default function Details() {
     const movie = useLoaderData();
+    const navigate = useNavigate();
     const [showFullSynopsis, setShowFullSynopsis] = useState(false);
     const { toggleBookmark, isBookmarked } = useBookmarks();
     const { setBookmarkState } = useOutletContext();
@@ -98,7 +99,10 @@ export default function Details() {
                 </div>
 
                 {/* Book Ticket Button */}
-                <button className="book-ticket-btn bg-blue text-white font-bold">
+                <button
+                    className="book-ticket-btn bg-blue text-white font-bold"
+                    onClick={() => navigate(`/booking/${movie.id}`)}
+                >
                     Book Ticket
                 </button>
             </div>

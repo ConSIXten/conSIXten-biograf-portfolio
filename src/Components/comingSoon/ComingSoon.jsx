@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import { getUpcomingMovies, getImageUrl } from '../../utilities/movieApi';
 import './ComingSoon.css';
 
@@ -48,7 +49,11 @@ export default function ComingSoon() {
             <h2 className="section-title">Coming Soon</h2>
             <div className="movies-scroll-container">
                 {movies.map((movie) => (
-                    <div key={movie.id} className="movie-card">
+                    <Link
+                        key={movie.id}
+                        to={`/explore/${movie.id}`}
+                        className="movie-card"
+                    >
                         <div className="coming-soon-poster">
                             {movie.poster_path ? (
                                 <img
@@ -68,7 +73,7 @@ export default function ComingSoon() {
                                 })}
                             </p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </section>

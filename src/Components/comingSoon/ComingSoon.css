@@ -31,6 +31,8 @@
     width: 315px;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    text-decoration: none;
+    color: inherit;
 }
 
 .coming-soon-poster {

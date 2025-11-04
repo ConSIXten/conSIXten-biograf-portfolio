@@ -11,11 +11,21 @@ function App() {
   const [bookmarkState, setBookmarkState] = useState({ isBookmarked: false, onToggle: null });
   const isHomePage = location.pathname === '/';
   const isDetailsPage = location.pathname.startsWith('/explore/') && location.pathname !== '/explore';
+  const isExplorePage = location.pathname === '/explore';
 
   // Get dynamic page title based on route
   const getPageTitle = () => {
     const path = location.pathname;
 
+    if (path === '/tickets') {
+      return 'E-Ticket';
+    }
+    if (path === '/payment') {
+      return 'Checkout';
+    }
+    if (path.startsWith('/booking/')) {
+      return 'Select Seats';
+    }
     if (path.startsWith('/explore/') && path !== '/explore') {
       return 'Details Movie';
     }
@@ -43,7 +53,7 @@ function App() {
         ) : (
           <PageHeader
             title={getPageTitle()}
-            showSearch={!isDetailsPage}
+            showSearch={isExplorePage}
             showBookmark={isDetailsPage}
             isBookmarked={bookmarkState.isBookmarked}
             onBookmarkClick={bookmarkState.onToggle}
