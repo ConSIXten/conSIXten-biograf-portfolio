@@ -41,6 +41,15 @@ function App() {
     if (path === '/saved' || path === '/bookmarks') {
       return 'Saved Movies';
     }
+    if (path === '/login') {
+      return 'Log In';
+    }
+    if (path === '/register') {
+      return 'Register';
+    }
+    if (path === '/profile') {
+      return 'Settings';
+    }
 
     return 'BiografApp';
   };
