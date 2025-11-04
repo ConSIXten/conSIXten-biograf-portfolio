@@ -3,6 +3,10 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
+// Debug: Check if API key is loaded
+console.log('API_KEY loaded:', API_KEY ? 'Yes' : 'No');
+console.log('API_KEY value:', API_KEY);
+
 // Helper function to build API URLs
 const buildUrl = (endpoint, params = {}) => {
     const url = new URL(`${BASE_URL}${endpoint}`);
