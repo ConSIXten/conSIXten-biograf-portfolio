@@ -13,6 +13,7 @@ export default function CinemaNearYou() {
             try {
                 setLoading(true);
                 const data = await getCinemas();
+                console.log('Cinema data:', data[0]); // Debug: check first cinema's data
                 // Add mock data for display (distance, status) - rating comes from database
                 const cinemasWithExtras = data.map(cinema => ({
                     ...cinema,
@@ -79,10 +80,18 @@ export default function CinemaNearYou() {
                 {displayedCinemas.map((cinema) => (
                     <div key={cinema.id} className="cinema-card">
                         <div className="cinema-logo">
-                            {/* Placeholder for cinema logo */}
-                            <div className="logo-placeholder">
-                                {cinema.name.charAt(0)}
-                            </div>
+                            {cinema.images && cinema.images[0]?.url ? (
+                                <img
+                                    src={cinema.images[0].url}
+                                    alt={cinema.name}
+                                    className="cinema-image"
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px', objectPosition: 'center' }}
+                                />
+                            ) : (
+                                <div className="logo-placeholder">
+                                    {cinema.name.charAt(0)}
+                                </div>
+                            )}
                         </div>
 
                         <div className="cinema-details">
