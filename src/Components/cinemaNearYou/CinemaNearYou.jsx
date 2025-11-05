@@ -66,8 +66,8 @@ export default function CinemaNearYou() {
         <section className="cinema-near-you">
             <div className="section-header">
                 <h2 className="section-title">Cinema Near You</h2>
-                <button 
-                    onClick={() => setShowAll(!showAll)} 
+                <button
+                    onClick={() => setShowAll(!showAll)}
                     className="see-all-link"
                     style={{ background: 'none', border: 'none', cursor: 'pointer' }}
                 >
