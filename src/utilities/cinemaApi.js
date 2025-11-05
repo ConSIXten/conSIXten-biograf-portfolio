@@ -1,4 +1,48 @@
-const API_BASE_URL = 'http://localhost:8888/biograf-api/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8888/biograf-api/api';
+
+// Fallback mock data for when API is not available (production)
+const mockCinemas = [
+    {
+        id: "1",
+        name: "Grand Cinema Downtown",
+        address: "123 Main Street",
+        city: "Copenhagen",
+        total_seats: "150",
+        rating: "4.5"
+    },
+    {
+        id: "2",
+        name: "CinemaX Vesterbro",
+        address: "456 Vesterbro Street",
+        city: "Copenhagen",
+        total_seats: "200",
+        rating: "4.7"
+    },
+    {
+        id: "3",
+        name: "Nordic Film House",
+        address: "789 Nørrebro Avenue",
+        city: "Copenhagen",
+        total_seats: "180",
+        rating: "4.3"
+    },
+    {
+        id: "4",
+        name: "Empire Cinema",
+        address: "321 Østerbro Street",
+        city: "Copenhagen",
+        total_seats: "220",
+        rating: "4.6"
+    },
+    {
+        id: "5",
+        name: "Royal Theater Cinema",
+        address: "654 Frederiksberg Road",
+        city: "Copenhagen",
+        total_seats: "160",
+        rating: "4.8"
+    }
+];
 
 // ============================================
 // CINEMAS
@@ -15,7 +59,9 @@ export async function getCinemas() {
         throw new Error('Failed to fetch cinemas');
     } catch (error) {
         console.error('Error fetching cinemas:', error);
-        throw error;
+        console.warn('Using mock cinema data as fallback');
+        // Return mock data if API fails (for production deployment)
+        return mockCinemas;
     }
 }
 
