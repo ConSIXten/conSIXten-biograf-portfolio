@@ -10,7 +10,7 @@ export default function Login() {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
 
@@ -19,7 +19,7 @@ export default function Login() {
             return;
         }
 
-        const result = login(username, password);
+        const result = await login(username, password);
 
         if (result.success) {
             navigate('/');

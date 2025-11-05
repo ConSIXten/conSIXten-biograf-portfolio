@@ -1,24 +1,82 @@
 import { useState, useEffect } from 'react';
-import { mockCinemas } from '../../utilities/mockCinemaData';
+import { getCinemas } from '../../utilities/cinemaApi';
 import './CinemaNearYou.css';
 
 export default function CinemaNearYou() {
     const [cinemas, setCinemas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
-        // Simulate fetching cinema data
-        setCinemas(mockCinemas);
+        const fetchCinemas = async () => {
+            try {
+                setLoading(true);
+                const data = await getCinemas();
+                // Add mock data for display (distance, status) - rating comes from database
+                const cinemasWithExtras = data.map(cinema => ({
+                    ...cinema,
+                    distance: '2.5 km', // You can calculate this based on user location later
+                    status: 'Open',
+                    closingTime: 'Until 11:00 PM',
+                    rating: parseFloat(cinema.rating) || 4.5 // Use database rating or fallback
+                }));
+                setCinemas(cinemasWithExtras);
+            } catch (err) {
+                console.error('Error fetching cinemas:', err);
+                setError('Failed to load cinemas');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCinemas();
     }, []);
+
+    if (loading) {
+        return (
+            <section className="cinema-near-you">
+                <div className="section-header">
+                    <h2 className="section-title">Cinema Near You</h2>
+                </div>
+                <div className="cinema-list">
+                    <p className="text-white">Loading cinemas...</p>
+                </div>
+            </section>
+        );
+    }
+
+    if (error) {
+        return (
+            <section className="cinema-near-you">
+                <div className="section-header">
+                    <h2 className="section-title">Cinema Near You</h2>
+                </div>
+                <div className="cinema-list">
+                    <p className="text-red">{error}</p>
+                </div>
+            </section>
+        );
+    }
+
+    // Show only 5 cinemas initially, or all if "See all" is clicked
+    const displayedCinemas = showAll ? cinemas : cinemas.slice(0, 5);
 
     return (
         <section className="cinema-near-you">
             <div className="section-header">
                 <h2 className="section-title">Cinema Near You</h2>
-                <a href="#" className="see-all-link">See all</a>
+                <button 
+                    onClick={() => setShowAll(!showAll)} 
+                    className="see-all-link"
+                    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                >
+                    {showAll ? 'Show less' : 'See all'}
+                </button>
             </div>
 
             <div className="cinema-list">
-                {cinemas.map((cinema) => (
+                {displayedCinemas.map((cinema) => (
                     <div key={cinema.id} className="cinema-card">
                         <div className="cinema-logo">
                             {/* Placeholder for cinema logo */}

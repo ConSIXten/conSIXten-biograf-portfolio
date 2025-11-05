@@ -22,7 +22,7 @@ export default function HomePageHeader() {
                     {currentUser ? (
                         <>
                             <p className="welcome-text">Welcome Back,</p>
-                            <h1 className="user-name">{currentUser.username}</h1>
+                            <h1 className="user-name">{currentUser.name || currentUser.username}</h1>
                         </>
                     ) : (
                         <>
@@ -35,7 +35,7 @@ export default function HomePageHeader() {
                 </div>
                 <div className="profile-avatar" onClick={handleAvatarClick}>
                     <div className="avatar-placeholder">
-                        <span>{currentUser ? currentUser.username.charAt(0) : '?'}</span>
+                        <span>{currentUser ? (currentUser.name || currentUser.username).charAt(0) : '?'}</span>
                     </div>
                 </div>
             </div>

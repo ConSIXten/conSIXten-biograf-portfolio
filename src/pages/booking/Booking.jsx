@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
-import { mockCinemas } from '../../utilities/mockCinemaData';
+import { getCinemas, getShowtimes } from '../../utilities/cinemaApi';
 import { getMovieDetails } from '../../utilities/movieApi';
 import './Booking.css';
 
@@ -35,12 +35,20 @@ export default function Booking() {
         fetchMovie();
     }, [movieId]);
 
-    // Initialize cinemas from mock data
+    // Fetch cinemas from API
     useEffect(() => {
-        setCinemas(mockCinemas);
-        if (mockCinemas.length > 0) {
-            setSelectedCinema(mockCinemas[0].name);
-        }
+        const fetchCinemas = async () => {
+            try {
+                const data = await getCinemas();
+                setCinemas(data);
+                if (data.length > 0) {
+                    setSelectedCinema(data[0].id); // Store cinema ID instead of name
+                }
+            } catch (error) {
+                console.error('Error fetching cinemas:', error);
+            }
+        };
+        fetchCinemas();
     }, []);
 
     // Generate dates (next 7 days)
@@ -69,16 +77,38 @@ export default function Booking() {
         }
     }, []);
 
-    // Generate time slots
+    // Fetch showtimes based on cinema, date, and movie
     useEffect(() => {
-        const timeSlots = [
-            '10:00 AM', '01:00 PM', '04:00 PM', '07:00 PM', '10:00 PM'
-        ];
-        setTimes(timeSlots);
-        if (timeSlots.length > 0) {
-            setSelectedTime(timeSlots[1]); // Default to 01:00 PM
-        }
-    }, []);
+        if (!selectedCinema || !selectedDate || !movieId) return;
+
+        const fetchShowtimes = async () => {
+            try {
+                const showtimesData = await getShowtimes({
+                    cinema_id: selectedCinema,
+                    movie_id: movieId,
+                    date: selectedDate
+                });
+
+                // Extract unique times from showtimes
+                const uniqueTimes = [...new Set(showtimesData.map(st => st.show_time))];
+                setTimes(uniqueTimes);
+
+                if (uniqueTimes.length > 0) {
+                    setSelectedTime(uniqueTimes[0]);
+                }
+            } catch (error) {
+                console.error('Error fetching showtimes:', error);
+                // Fallback to mock times if API fails
+                const timeSlots = [
+                    '10:00:00', '13:00:00', '16:00:00', '19:00:00', '22:00:00'
+                ];
+                setTimes(timeSlots);
+                setSelectedTime(timeSlots[1]);
+            }
+        };
+
+        fetchShowtimes();
+    }, [selectedCinema, selectedDate, movieId]);
 
     // Seat grid configuration (7 rows, 8 seats per row with aisle)
     const rows = 7;
@@ -140,8 +170,8 @@ export default function Booking() {
                     onChange={(e) => setSelectedCinema(e.target.value)}
                 >
                     {cinemas.map((cinema) => (
-                        <option key={cinema.id} value={cinema.name}>
-                            {cinema.name}
+                        <option key={cinema.id} value={cinema.id}>
+                            {cinema.name} - {cinema.city}
                         </option>
                     ))}
                 </select>

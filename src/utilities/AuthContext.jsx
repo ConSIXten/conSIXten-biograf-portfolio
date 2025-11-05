@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AuthContext } from './authContext';
+import { registerUser, loginUser } from './cinemaApi';
 
 export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
@@ -14,51 +15,56 @@ export default function AuthProvider({ children }) {
         setIsLoading(false);
     }, []);
 
-    // Register new user
-    const register = (username, password) => {
-        // Get existing users from localStorage
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
+    // Register new user (supports both email or username as name)
+    const register = async (username, password, email = null) => {
+        try {
+            // Use email if provided, otherwise use username as both name and email
+            const name = username;
+            const userEmail = email || `${username}@biograf.local`;
 
-        // Check if username already exists
-        if (users.find(u => u.username === username)) {
-            return { success: false, message: 'Username already exists' };
+            const result = await registerUser(name, userEmail, password);
+
+            if (result.success) {
+                // Log in the new user automatically
+                const userToStore = {
+                    id: result.user_id,
+                    name: name,
+                    email: userEmail
+                };
+                setCurrentUser(userToStore);
+                localStorage.setItem('currentUser', JSON.stringify(userToStore));
+            }
+
+            return result;
+        } catch (error) {
+            console.error('Registration error:', error);
+            return { success: false, message: 'Registration failed. Please try again.' };
         }
-
-        // Create new user
-        const newUser = {
-            id: Date.now(),
-            username,
-            password, // In production, this should be hashed!
-            createdAt: new Date().toISOString()
-        };
-
-        // Save to users array
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // Log in the new user
-        const userToStore = { id: newUser.id, username: newUser.username };
-        setCurrentUser(userToStore);
-        localStorage.setItem('currentUser', JSON.stringify(userToStore));
-
-        return { success: true, message: 'Registration successful' };
     };
 
-    // Login existing user
-    const login = (username, password) => {
-        const users = JSON.parse(localStorage.getItem('users') || '[]');
-        const user = users.find(u => u.username === username && u.password === password);
+    // Login existing user (supports both email or username)
+    const login = async (username, password) => {
+        try {
+            // Try logging in with email format
+            const email = username.includes('@') ? username : `${username}@biograf.local`;
+            const result = await loginUser(email, password);
 
-        if (!user) {
-            return { success: false, message: 'Invalid username or password' };
+            if (result.success) {
+                // Store user data
+                const userToStore = {
+                    id: result.data.id,
+                    name: result.data.name,
+                    email: result.data.email
+                };
+                setCurrentUser(userToStore);
+                localStorage.setItem('currentUser', JSON.stringify(userToStore));
+            }
+
+            return result;
+        } catch (error) {
+            console.error('Login error:', error);
+            return { success: false, message: 'Login failed. Please try again.' };
         }
-
-        // Store user without password
-        const userToStore = { id: user.id, username: user.username };
-        setCurrentUser(userToStore);
-        localStorage.setItem('currentUser', JSON.stringify(userToStore));
-
-        return { success: true, message: 'Login successful' };
     };
 
     // Logout user
