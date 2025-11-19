@@ -1,3 +1,4 @@
+// src/pages/details/Details.jsx
 import { useState, useEffect } from 'react';
 import { useLoaderData, useOutletContext, useNavigate } from 'react-router';
 import { getImageUrl } from '../../utilities/movieApi';
