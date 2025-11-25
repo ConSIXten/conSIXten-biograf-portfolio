@@ -113,3 +113,11 @@
 .bg-red {
     background-color: #E85D75;
 }
+
+@media screen and (min-width: 64rem) {
+    .profile-page {
+        padding: 6rem;
+        margin-inline: 40rem;
+    
+    }
+}
