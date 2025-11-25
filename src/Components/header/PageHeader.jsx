@@ -7,7 +7,8 @@ export default function PageHeader({
     showSearch = true,
     showBookmark = false,
     isBookmarked = false,
-    onBookmarkClick
+    onBookmarkClick,
+    onSearchClick
 }) {
     const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ export default function PageHeader({
                 {showSearch && !showBookmark && (
                     <button
                         className="search-button"
+                        onClick={onSearchClick}
                         aria-label="Search"
                     >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,3 +1,14 @@
+// Utility to escape HTML entities
+// Utility to escape HTML entities
+function escapeHtml(text) {
+    if (!text) return '';
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../utilities/useAuth';
@@ -49,10 +60,10 @@ export default function Profile() {
             <div className="profile-header" onClick={() => navigate('/edit-profile')}>
                 <div className="profile-info">
                     <div className="profile-avatar-large">
-                        <span>{currentUser?.username?.charAt(0) || '?'}</span>
+                        <span>{(currentUser?.name || currentUser?.username)?.charAt(0) || '?'}</span>
                     </div>
                     <div className="profile-details">
-                        <h2 className="profile-name text-white font-bold">{currentUser?.username || 'Guest'}</h2>
+                        <h2 className="profile-name text-white font-bold">{escapeHtml(currentUser?.name || currentUser?.username || 'Guest')}</h2>
                         <p className="profile-subtitle text-gray">{getUserLevel()}</p>
                     </div>
                 </div>

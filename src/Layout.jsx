@@ -9,6 +9,7 @@ import '../css/style.css'
 function App() {
   const location = useLocation();
   const [bookmarkState, setBookmarkState] = useState({ isBookmarked: false, onToggle: null });
+  const [searchCallback, setSearchCallback] = useState(null);
   const isHomePage = location.pathname === '/';
   const isDetailsPage = location.pathname.startsWith('/explore/') && location.pathname !== '/explore';
   const isExplorePage = location.pathname === '/explore';
@@ -66,11 +67,12 @@ function App() {
             showBookmark={isDetailsPage}
             isBookmarked={bookmarkState.isBookmarked}
             onBookmarkClick={bookmarkState.onToggle}
+            onSearchClick={searchCallback}
           />
         )}
       </header>
       <main>
-        <Outlet context={{ setBookmarkState }} />
+        <Outlet context={{ setBookmarkState, setSearchCallback }} />
       </main>
       <footer>
         <Footer />

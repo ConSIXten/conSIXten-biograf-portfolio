@@ -1,3 +1,4 @@
+// src/pages/details/Details.jsx
 import { useState, useEffect } from 'react';
 import { useLoaderData, useOutletContext, useNavigate } from 'react-router';
 import { getImageUrl } from '../../utilities/movieApi';
@@ -41,6 +42,19 @@ export default function Details() {
 
     // Get first 2-3 genres
     const displayGenres = movie.genres?.slice(0, 3) || [];
+
+    // Check if movie is "Now Showing" (released and not too old)
+    const isNowShowing = () => {
+        if (!movie.release_date) return false;
+
+        const releaseDate = new Date(movie.release_date);
+        const today = new Date();
+        const monthsAgo = new Date();
+        monthsAgo.setMonth(today.getMonth() - 3); // Movies older than 3 months
+
+        // Movie is "Now Showing" if it's released and not older than 3 months
+        return releaseDate <= today && releaseDate >= monthsAgo;
+    };
 
     return (
         <div className="details-page">
@@ -98,13 +112,15 @@ export default function Details() {
                     </p>
                 </div>
 
-                {/* Book Ticket Button */}
-                <button
-                    className="book-ticket-btn bg-blue text-white font-bold"
-                    onClick={() => navigate(`/booking/${movie.id}`)}
-                >
-                    Book Ticket
-                </button>
+                {/* Book Ticket Button - Only show for "Now Showing" movies */}
+                {isNowShowing() && (
+                    <button
+                        className="book-ticket-btn bg-blue text-white font-bold"
+                        onClick={() => navigate(`/booking/${movie.id}`)}
+                    >
+                        Book Ticket
+                    </button>
+                )}
             </div>
         </div>
     );
