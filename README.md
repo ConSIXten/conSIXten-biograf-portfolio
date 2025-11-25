@@ -14,6 +14,7 @@ A modern, full-stack movie discovery and booking platform built with React and P
 - **Booking System**: Select cinemas, showtimes, seats, and complete payments
 - **Responsive Design**: Mobile-first UI with dark theme
 - **Security**: Content Security Policy, input sanitization, and production-safe logging
+- **Demo Mode**: Fully functional without backend - uses mock data for portfolio demonstration
 
 ## Tech Stack
 

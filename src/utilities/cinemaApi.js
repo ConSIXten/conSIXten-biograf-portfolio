@@ -1,5 +1,8 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8888/biograf-api/api';
 
+// Demo mode: use mock data instead of API calls
+const DEMO_MODE = !import.meta.env.VITE_API_URL || import.meta.env.DEV;
+
 // Fallback mock data for when API is not available (production)
 const mockCinemas = [
     {
@@ -44,11 +47,63 @@ const mockCinemas = [
     }
 ];
 
+const mockShowtimes = [
+    {
+        id: "1",
+        cinema_id: "1",
+        movie_id: "550", // Fight Club
+        showtime: "2025-11-25 14:00:00",
+        price: "120",
+        available_seats: "45"
+    },
+    {
+        id: "2",
+        cinema_id: "1",
+        movie_id: "550",
+        showtime: "2025-11-25 18:00:00",
+        price: "140",
+        available_seats: "32"
+    },
+    {
+        id: "3",
+        cinema_id: "2",
+        movie_id: "278", // The Shawshank Redemption
+        showtime: "2025-11-25 16:00:00",
+        price: "130",
+        available_seats: "28"
+    },
+    {
+        id: "4",
+        cinema_id: "3",
+        movie_id: "238", // The Godfather
+        showtime: "2025-11-25 20:00:00",
+        price: "150",
+        available_seats: "15"
+    }
+];
+
+const mockBookings = [
+    {
+        id: "1",
+        user_id: "1",
+        showtime_id: "1",
+        seats: "A1,A2",
+        total_price: "240",
+        booking_date: "2025-11-20 10:00:00",
+        movie_id: "550"
+    }
+];
+
 // ============================================
 // CINEMAS
 // ============================================
 
 export async function getCinemas() {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - using mock cinema data');
+        return mockCinemas;
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/cinemas/read.php`);
         const data = await response.json();
@@ -85,6 +140,20 @@ export async function getCinema(cinemaId) {
 // ============================================
 
 export async function getShowtimes(filters = {}) {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - using mock showtime data');
+        let filteredShowtimes = mockShowtimes;
+        
+        if (filters.cinema_id) {
+            filteredShowtimes = filteredShowtimes.filter(st => st.cinema_id === filters.cinema_id);
+        }
+        if (filters.movie_id) {
+            filteredShowtimes = filteredShowtimes.filter(st => st.movie_id === filters.movie_id);
+        }
+        
+        return filteredShowtimes;
+    }
+
     try {
         const params = new URLSearchParams();
 
@@ -102,15 +171,38 @@ export async function getShowtimes(filters = {}) {
         throw new Error('Failed to fetch showtimes');
     } catch (error) {
         console.error('Error fetching showtimes:', error);
-        throw error;
+        console.warn('Using mock showtime data as fallback');
+        // Return mock data if API fails
+        let filteredShowtimes = mockShowtimes;
+        
+        if (filters.cinema_id) {
+            filteredShowtimes = filteredShowtimes.filter(st => st.cinema_id === filters.cinema_id);
+        }
+        if (filters.movie_id) {
+            filteredShowtimes = filteredShowtimes.filter(st => st.movie_id === filters.movie_id);
+        }
+        
+        return filteredShowtimes;
     }
-}
-
-// ============================================
+}// ============================================
 // AUTHENTICATION
 // ============================================
 
 export async function registerUser(name, email, password) {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - mock registration');
+        // Mock successful registration
+        return {
+            success: true,
+            message: 'User registered successfully (demo mode)',
+            data: {
+                id: Date.now().toString(),
+                name,
+                email
+            }
+        };
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register.php`, {
             method: 'POST',
@@ -124,11 +216,37 @@ export async function registerUser(name, email, password) {
         return data;
     } catch (error) {
         console.error('Error registering user:', error);
-        throw error;
+        console.warn('Using mock registration as fallback');
+        // Mock successful registration
+        return {
+            success: true,
+            message: 'User registered successfully (demo mode)',
+            data: {
+                id: Date.now().toString(),
+                name,
+                email
+            }
+        };
     }
 }
 
 export async function loginUser(email, password) {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - mock login');
+        // Mock successful login
+        const mockUser = {
+            id: "1",
+            name: "Demo User",
+            email: email
+        };
+        localStorage.setItem('currentUser', JSON.stringify(mockUser));
+        return {
+            success: true,
+            message: 'Login successful (demo mode)',
+            data: mockUser
+        };
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login.php`, {
             method: 'POST',
@@ -148,7 +266,19 @@ export async function loginUser(email, password) {
         return data;
     } catch (error) {
         console.error('Error logging in:', error);
-        throw error;
+        console.warn('Using mock login as fallback');
+        // Mock successful login
+        const mockUser = {
+            id: "1",
+            name: "Demo User",
+            email: email
+        };
+        localStorage.setItem('currentUser', JSON.stringify(mockUser));
+        return {
+            success: true,
+            message: 'Login successful (demo mode)',
+            data: mockUser
+        };
     }
 }
 
@@ -157,6 +287,25 @@ export async function loginUser(email, password) {
 // ============================================
 
 export async function createBooking(userId, showtimeId, seats, totalPrice) {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - mock booking creation');
+        // Mock successful booking
+        const mockBooking = {
+            id: Date.now().toString(),
+            user_id: userId,
+            showtime_id: showtimeId,
+            seats: seats,
+            total_price: totalPrice,
+            booking_date: new Date().toISOString(),
+            movie_id: mockShowtimes.find(st => st.id === showtimeId)?.movie_id
+        };
+        return {
+            success: true,
+            message: 'Booking created successfully (demo mode)',
+            data: mockBooking
+        };
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/create.php`, {
             method: 'POST',
@@ -175,11 +324,32 @@ export async function createBooking(userId, showtimeId, seats, totalPrice) {
         return data;
     } catch (error) {
         console.error('Error creating booking:', error);
-        throw error;
+        console.warn('Using mock booking creation as fallback');
+        // Mock successful booking
+        const mockBooking = {
+            id: Date.now().toString(),
+            user_id: userId,
+            showtime_id: showtimeId,
+            seats: seats,
+            total_price: totalPrice,
+            booking_date: new Date().toISOString(),
+            movie_id: mockShowtimes.find(st => st.id === showtimeId)?.movie_id
+        };
+        return {
+            success: true,
+            message: 'Booking created successfully (demo mode)',
+            data: mockBooking
+        };
     }
 }
 
 export async function getUserBookings(userId) {
+    if (DEMO_MODE) {
+        console.log('Running in demo mode - using mock booking data');
+        // Return mock bookings for the user
+        return mockBookings.filter(booking => booking.user_id === userId);
+    }
+
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/read.php?user_id=${userId}`);
         const data = await response.json();
@@ -190,7 +360,9 @@ export async function getUserBookings(userId) {
         throw new Error('Failed to fetch bookings');
     } catch (error) {
         console.error('Error fetching bookings:', error);
-        throw error;
+        console.warn('Using mock booking data as fallback');
+        // Return mock bookings for the user
+        return mockBookings.filter(booking => booking.user_id === userId);
     }
 }
 
