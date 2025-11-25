@@ -1,5 +1,9 @@
 # Biograf-ConSIXten: Movie Booking App
 
+[![CI](https://github.com/ConSIXten/conSIXten-biograf-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/ConSIXten/conSIXten-biograf-portfolio/actions/workflows/ci.yml)
+[![React](https://img.shields.io/badge/React-19-blue)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-7.1-purple)](https://vitejs.dev/)
+
 A modern, full-stack movie discovery and booking platform built with React and PHP.
 
 ## Features

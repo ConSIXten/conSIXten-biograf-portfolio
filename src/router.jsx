@@ -1,20 +1,23 @@
 import { createBrowserRouter } from "react-router";
+import { lazy } from "react";
 import Layout from "./Layout";
-import Home from "./pages/Home";
-import Explore from "./pages/explore/Explore";
-import Detail from "./pages/details/Details";
-import Booking from "./pages/booking/Booking";
-import Payment from "./pages/payment/Payment";
-import Tickets from "./pages/tickets/Tickets";
-import Saved from "./pages/saved/Saved";
-import Contact from "./pages/Contact";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Profile from "./pages/profile/Profile";
-import NotFound from "./pages/NotFound";
 import { getMovieDetails } from "./utilities/movieApi";
 import Loading from "./Components/Loading";
 import { ErrorBoundary } from "./Components/Error";
+
+// Lazy load components for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const Explore = lazy(() => import("./pages/explore/Explore"));
+const Detail = lazy(() => import("./pages/details/Details"));
+const Booking = lazy(() => import("./pages/booking/Booking"));
+const Payment = lazy(() => import("./pages/payment/Payment"));
+const Tickets = lazy(() => import("./pages/tickets/Tickets"));
+const Saved = lazy(() => import("./pages/saved/Saved"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Login = lazy(() => import("./pages/auth/Login"));
+const Register = lazy(() => import("./pages/auth/Register"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const router = createBrowserRouter([
     {
