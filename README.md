@@ -26,41 +26,6 @@ A modern, full-stack movie discovery and booking platform built with React and P
 - CORS-enabled endpoints
 - Authentication and booking logic
 
-## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- PHP 8.0+
-- MySQL
-- TMDB API Key (free from [themoviedb.org](https://www.themoviedb.org/settings/api))
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ConSIXten/biograf-consixten.git
-   cd biograf-consixten
-   ```
-
-2. Install frontend dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   Create `.env` file:
-   ```
-   VITE_TMDB_API_KEY=your_tmdb_api_key_here
-   VITE_API_URL=http://localhost:8888/biograf-api/api
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Set up the backend (separate repository) and start it on port 8888.
-
 ## Project Structure
 
 ```
@@ -78,11 +43,3 @@ src/
 - Input validation and output sanitization
 - Production-safe logging (no console leaks)
 - HTTPS enforcement in production
-
-## Contributing
-
-This is a portfolio project. Feel free to fork and modify!
-
-## License
-
-MIT License - see LICENSE file for details.
