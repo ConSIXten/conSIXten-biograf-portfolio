@@ -1,8 +1,5 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8888/biograf-api/api';
 
-// Demo mode: use mock data instead of API calls
-const DEMO_MODE = !import.meta.env.VITE_API_URL || import.meta.env.DEV;
-
 // Fallback mock data for when API is not available (production)
 const mockCinemas = [
     {
@@ -99,11 +96,6 @@ const mockBookings = [
 // ============================================
 
 export async function getCinemas() {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - using mock cinema data');
-        return mockCinemas;
-    }
-
     try {
         const response = await fetch(`${API_BASE_URL}/cinemas/read.php`);
         const data = await response.json();
@@ -140,20 +132,6 @@ export async function getCinema(cinemaId) {
 // ============================================
 
 export async function getShowtimes(filters = {}) {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - using mock showtime data');
-        let filteredShowtimes = mockShowtimes;
-        
-        if (filters.cinema_id) {
-            filteredShowtimes = filteredShowtimes.filter(st => st.cinema_id === filters.cinema_id);
-        }
-        if (filters.movie_id) {
-            filteredShowtimes = filteredShowtimes.filter(st => st.movie_id === filters.movie_id);
-        }
-        
-        return filteredShowtimes;
-    }
-
     try {
         const params = new URLSearchParams();
 
@@ -189,20 +167,6 @@ export async function getShowtimes(filters = {}) {
 // ============================================
 
 export async function registerUser(name, email, password) {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - mock registration');
-        // Mock successful registration
-        return {
-            success: true,
-            message: 'User registered successfully (demo mode)',
-            data: {
-                id: Date.now().toString(),
-                name,
-                email
-            }
-        };
-    }
-
     try {
         const response = await fetch(`${API_BASE_URL}/auth/register.php`, {
             method: 'POST',
@@ -231,22 +195,6 @@ export async function registerUser(name, email, password) {
 }
 
 export async function loginUser(email, password) {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - mock login');
-        // Mock successful login
-        const mockUser = {
-            id: "1",
-            name: "Demo User",
-            email: email
-        };
-        localStorage.setItem('currentUser', JSON.stringify(mockUser));
-        return {
-            success: true,
-            message: 'Login successful (demo mode)',
-            data: mockUser
-        };
-    }
-
     try {
         const response = await fetch(`${API_BASE_URL}/auth/login.php`, {
             method: 'POST',
@@ -287,25 +235,6 @@ export async function loginUser(email, password) {
 // ============================================
 
 export async function createBooking(userId, showtimeId, seats, totalPrice) {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - mock booking creation');
-        // Mock successful booking
-        const mockBooking = {
-            id: Date.now().toString(),
-            user_id: userId,
-            showtime_id: showtimeId,
-            seats: seats,
-            total_price: totalPrice,
-            booking_date: new Date().toISOString(),
-            movie_id: mockShowtimes.find(st => st.id === showtimeId)?.movie_id
-        };
-        return {
-            success: true,
-            message: 'Booking created successfully (demo mode)',
-            data: mockBooking
-        };
-    }
-
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/create.php`, {
             method: 'POST',
@@ -344,12 +273,6 @@ export async function createBooking(userId, showtimeId, seats, totalPrice) {
 }
 
 export async function getUserBookings(userId) {
-    if (DEMO_MODE) {
-        console.log('Running in demo mode - using mock booking data');
-        // Return mock bookings for the user
-        return mockBookings.filter(booking => booking.user_id === userId);
-    }
-
     try {
         const response = await fetch(`${API_BASE_URL}/bookings/read.php?user_id=${userId}`);
         const data = await response.json();
