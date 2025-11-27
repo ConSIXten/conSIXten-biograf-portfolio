@@ -6,12 +6,6 @@
 
 A modern, full-stack movie discovery and booking platform built with React and PHP.
 
-## Live Demo
-
-🚀 **[View Live Demo](https://conzta-bif-app.netlify.app)** - Experience the app in action on Netlify!
-
-**Demo Tip**: Click "Demo Login" on the homepage to instantly access all features (booking, profiles, etc.) without registration.
-
 ## Features
 
 - **Movie Discovery**: Search and browse movies using The Movie Database (TMDB) API
