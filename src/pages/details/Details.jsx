@@ -69,7 +69,7 @@ export default function Details() {
 
             {/* Movie Info */}
             <div className="movie-info">
-                <h1 className="movie-title text-white fs-3xl font-bold mb-3">
+                <h1 className="movie-title text-white fs-3xl font-bold mb-3" data-testid="movie-title">
                     {movie.title}
                 </h1>
 
@@ -97,7 +97,7 @@ export default function Details() {
                 {/* Synopsis */}
                 <div className="synopsis-section mb-5">
                     <h2 className="text-white fs-2xl font-bold mb-3">Synopsis</h2>
-                    <p className="synopsis-text text-gray">
+                    <p className="synopsis-text text-gray" data-testid="movie-overview">
                         {showFullSynopsis
                             ? movie.overview
                             : `${movie.overview?.substring(0, 150)}...`}

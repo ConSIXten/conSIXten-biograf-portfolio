@@ -80,6 +80,7 @@ export default function Register() {
                             placeholder="Create a password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            data-testid="password-input"
                         />
                     </div>
 
@@ -94,10 +95,11 @@ export default function Register() {
                             placeholder="Confirm your password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
+                            data-testid="confirm-password-input"
                         />
                     </div>
 
-                    <button type="submit" className="auth-button bg-blue text-white font-bold">
+                    <button type="submit" className="auth-button bg-blue text-white font-bold" data-testid="register-button">
                         Register
                     </button>
                 </form>

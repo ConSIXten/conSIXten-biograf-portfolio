@@ -45,6 +45,7 @@ export default function TopMovies({ type = 'now-showing' }) {
                         key={movie.id}
                         to={`/explore/${movie.id}`}
                         className="top-movie-card"
+                        data-testid="movie-card"
                     >
                         <div className="top-movie-poster bg-dark-secondary">
                             <img
