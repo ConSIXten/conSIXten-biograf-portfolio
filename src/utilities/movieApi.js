@@ -3,9 +3,20 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';
 
+// Import mock data for fallback
+import { mockMovies, mockMovieDetails } from './mockMovieData.js';
+
 // Debug: Check if API key is loaded
 console.log('API_KEY loaded:', API_KEY ? 'Yes' : 'No');
-console.log('API_KEY value:', API_KEY);
+console.log('Running in CI:', !!import.meta.env.CI);
+
+// Helper function to check if we should use mock data
+const shouldUseMockData = () => {
+    return !API_KEY || import.meta.env.CI || import.meta.env.DEV;
+};
+
+// Helper function to simulate API delay for mock data
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Helper function to build API URLs
 const buildUrl = (endpoint, params = {}) => {
@@ -44,16 +55,60 @@ export const getPopularMovies = async (page = 1) => {
 
 // Fetch now playing movies
 export const getNowPlayingMovies = async (page = 1) => {
-    const url = buildUrl('/movie/now_playing', { page });
-    const response = await fetch(url);
-    return handleResponse(response);
+    if (shouldUseMockData()) {
+        console.log('Using mock data for now playing movies');
+        await delay(500); // Simulate API delay
+        return {
+            page: 1,
+            results: mockMovies.slice(0, 10),
+            total_pages: 1,
+            total_results: mockMovies.length
+        };
+    }
+
+    try {
+        const url = buildUrl('/movie/now_playing', { page });
+        const response = await fetch(url);
+        return handleResponse(response);
+    } catch (error) {
+        console.warn('API failed, falling back to mock data:', error.message);
+        await delay(500);
+        return {
+            page: 1,
+            results: mockMovies.slice(0, 10),
+            total_pages: 1,
+            total_results: mockMovies.length
+        };
+    }
 };
 
 // Fetch upcoming movies
 export const getUpcomingMovies = async (page = 1) => {
-    const url = buildUrl('/movie/upcoming', { page });
-    const response = await fetch(url);
-    return handleResponse(response);
+    if (shouldUseMockData()) {
+        console.log('Using mock data for upcoming movies');
+        await delay(500);
+        return {
+            page: 1,
+            results: mockMovies.slice(0, 10),
+            total_pages: 1,
+            total_results: mockMovies.length
+        };
+    }
+
+    try {
+        const url = buildUrl('/movie/upcoming', { page });
+        const response = await fetch(url);
+        return handleResponse(response);
+    } catch (error) {
+        console.warn('API failed, falling back to mock data:', error.message);
+        await delay(500);
+        return {
+            page: 1,
+            results: mockMovies.slice(0, 10),
+            total_pages: 1,
+            total_results: mockMovies.length
+        };
+    }
 };
 
 // Fetch top rated movies
@@ -65,11 +120,23 @@ export const getTopRatedMovies = async (page = 1) => {
 
 // Fetch movie details by ID
 export const getMovieDetails = async ({ params }) => {
-    const url = buildUrl(`/movie/${params.id}`, {
-        append_to_response: 'credits,videos,similar'
-    });
-    const response = await fetch(url);
-    return handleResponse(response);
+    if (shouldUseMockData()) {
+        console.log('Using mock data for movie details');
+        await delay(300);
+        return mockMovieDetails;
+    }
+
+    try {
+        const url = buildUrl(`/movie/${params.id}`, {
+            append_to_response: 'credits,videos,similar'
+        });
+        const response = await fetch(url);
+        return handleResponse(response);
+    } catch (error) {
+        console.warn('API failed, falling back to mock data:', error.message);
+        await delay(300);
+        return mockMovieDetails;
+    }
 };
 
 // Search movies
