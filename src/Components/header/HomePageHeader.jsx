@@ -33,7 +33,7 @@ export default function HomePageHeader() {
                         </>
                     )}
                 </div>
-                <div className="profile-avatar" onClick={handleAvatarClick}>
+                <div className="profile-avatar" onClick={handleAvatarClick} data-testid="user-menu">
                     <div className="avatar-placeholder">
                         <span>{currentUser ? (currentUser.name || currentUser.username).charAt(0) : '?'}</span>
                     </div>

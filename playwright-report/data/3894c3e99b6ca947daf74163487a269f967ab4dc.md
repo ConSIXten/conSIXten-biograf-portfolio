@@ -1,0 +1,218 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - paragraph [ref=e6]: Get started here
+        - button "Go to Log-In" [ref=e7] [cursor=pointer]
+      - generic [ref=e10] [cursor=pointer]: "?"
+    - generic [ref=e14]:
+      - img [ref=e15]
+      - textbox "Search your favourite movie" [ref=e18]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - heading "Coming Soon" [level=2] [ref=e21]
+      - generic [ref=e22]:
+        - link "The Shadow's Edge The Shadow's Edge August 2025" [ref=e23]:
+          - /url: /explore/1419406
+          - img "The Shadow's Edge" [ref=e25]
+          - generic [ref=e26]:
+            - heading "The Shadow's Edge" [level=3] [ref=e27]
+            - paragraph [ref=e28]: August 2025
+        - 'link "Wicked: For Good Wicked: For Good November 2025" [ref=e29]':
+          - /url: /explore/967941
+          - 'img "Wicked: For Good" [ref=e31]'
+          - generic [ref=e32]:
+            - 'heading "Wicked: For Good" [level=3] [ref=e33]'
+            - paragraph [ref=e34]: November 2025
+        - link "Zootopia 2 Zootopia 2 November 2025" [ref=e35]:
+          - /url: /explore/1084242
+          - img "Zootopia 2" [ref=e37]
+          - generic [ref=e38]:
+            - heading "Zootopia 2" [level=3] [ref=e39]
+            - paragraph [ref=e40]: November 2025
+        - 'link "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins- JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins- November 2025" [ref=e41]':
+          - /url: /explore/1539104
+          - 'img "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-" [ref=e43]'
+          - generic [ref=e44]:
+            - 'heading "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-" [level=3] [ref=e45]'
+            - paragraph [ref=e46]: November 2025
+        - link "Playdate Playdate November 2025" [ref=e47]:
+          - /url: /explore/1248226
+          - img "Playdate" [ref=e49]
+          - generic [ref=e50]:
+            - heading "Playdate" [level=3] [ref=e51]
+            - paragraph [ref=e52]: November 2025
+        - link "Bugonia Bugonia October 2025" [ref=e53]:
+          - /url: /explore/701387
+          - img "Bugonia" [ref=e55]
+          - generic [ref=e56]:
+            - heading "Bugonia" [level=3] [ref=e57]
+            - paragraph [ref=e58]: October 2025
+        - 'link "Chainsaw Man - The Movie: Reze Arc Chainsaw Man - The Movie: Reze Arc September 2025" [ref=e59]':
+          - /url: /explore/1218925
+          - 'img "Chainsaw Man - The Movie: Reze Arc" [ref=e61]'
+          - generic [ref=e62]:
+            - 'heading "Chainsaw Man - The Movie: Reze Arc" [level=3] [ref=e63]'
+            - paragraph [ref=e64]: September 2025
+        - link "Regretting You Regretting You October 2025" [ref=e65]:
+          - /url: /explore/1327862
+          - img "Regretting You" [ref=e67]
+          - generic [ref=e68]:
+            - heading "Regretting You" [level=3] [ref=e69]
+            - paragraph [ref=e70]: October 2025
+        - link "The Running Man The Running Man November 2025" [ref=e71]:
+          - /url: /explore/798645
+          - img "The Running Man" [ref=e73]
+          - generic [ref=e74]:
+            - heading "The Running Man" [level=3] [ref=e75]
+            - paragraph [ref=e76]: November 2025
+        - 'link "Sisu: Road to Revenge Sisu: Road to Revenge October 2025" [ref=e77]':
+          - /url: /explore/1223601
+          - 'img "Sisu: Road to Revenge" [ref=e79]'
+          - generic [ref=e80]:
+            - 'heading "Sisu: Road to Revenge" [level=3] [ref=e81]'
+            - paragraph [ref=e82]: October 2025
+        - link "Stitch Head Stitch Head October 2025" [ref=e83]:
+          - /url: /explore/1214130
+          - img "Stitch Head" [ref=e85]
+          - generic [ref=e86]:
+            - heading "Stitch Head" [level=3] [ref=e87]
+            - paragraph [ref=e88]: October 2025
+        - link "No Other Choice No Other Choice September 2025" [ref=e89]:
+          - /url: /explore/639988
+          - img "No Other Choice" [ref=e91]
+          - generic [ref=e92]:
+            - heading "No Other Choice" [level=3] [ref=e93]
+            - paragraph [ref=e94]: September 2025
+        - 'link "Holy Night: Demon Hunters Holy Night: Demon Hunters April 2025" [ref=e95]':
+          - /url: /explore/793387
+          - 'img "Holy Night: Demon Hunters" [ref=e97]'
+          - generic [ref=e98]:
+            - 'heading "Holy Night: Demon Hunters" [level=3] [ref=e99]'
+            - paragraph [ref=e100]: April 2025
+        - link "Grand Prix of Europe Grand Prix of Europe July 2025" [ref=e101]:
+          - /url: /explore/1316147
+          - img "Grand Prix of Europe" [ref=e103]
+          - generic [ref=e104]:
+            - heading "Grand Prix of Europe" [level=3] [ref=e105]
+            - paragraph [ref=e106]: July 2025
+        - 'link "Avatar: Fire and Ash Avatar: Fire and Ash December 2025" [ref=e107]':
+          - /url: /explore/83533
+          - 'img "Avatar: Fire and Ash" [ref=e109]'
+          - generic [ref=e110]:
+            - 'heading "Avatar: Fire and Ash" [level=3] [ref=e111]'
+            - paragraph [ref=e112]: December 2025
+        - link "Dead of Winter Dead of Winter September 2025" [ref=e113]:
+          - /url: /explore/1235746
+          - img "Dead of Winter" [ref=e115]
+          - generic [ref=e116]:
+            - heading "Dead of Winter" [level=3] [ref=e117]
+            - paragraph [ref=e118]: September 2025
+        - link "If I Had Legs I'd Kick You If I Had Legs I'd Kick You October 2025" [ref=e119]:
+          - /url: /explore/1160360
+          - img "If I Had Legs I'd Kick You" [ref=e121]
+          - generic [ref=e122]:
+            - heading "If I Had Legs I'd Kick You" [level=3] [ref=e123]
+            - paragraph [ref=e124]: October 2025
+        - link "Nobody Nobody August 2025" [ref=e125]:
+          - /url: /explore/1304434
+          - img "Nobody" [ref=e127]
+          - generic [ref=e128]:
+            - heading "Nobody" [level=3] [ref=e129]
+            - paragraph [ref=e130]: August 2025
+        - link "How the Grinch Stole Christmas How the Grinch Stole Christmas November 2000" [ref=e131]:
+          - /url: /explore/8871
+          - img "How the Grinch Stole Christmas" [ref=e133]
+          - generic [ref=e134]:
+            - heading "How the Grinch Stole Christmas" [level=3] [ref=e135]
+            - paragraph [ref=e136]: November 2000
+        - link "Harry Potter and the Goblet of Fire Harry Potter and the Goblet of Fire November 2005" [ref=e137]:
+          - /url: /explore/674
+          - img "Harry Potter and the Goblet of Fire" [ref=e139]
+          - generic [ref=e140]:
+            - heading "Harry Potter and the Goblet of Fire" [level=3] [ref=e141]
+            - paragraph [ref=e142]: November 2005
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - heading "Cinema Near You" [level=2] [ref=e145]
+        - button "See all" [ref=e146] [cursor=pointer]
+      - generic [ref=e147]:
+        - generic [ref=e148] [cursor=pointer]:
+          - img "Roskilde Bio" [ref=e150]
+          - generic [ref=e151]:
+            - generic [ref=e152]:
+              - img [ref=e153]
+              - generic [ref=e156]: 2.5 km
+            - heading "Roskilde Bio" [level=3] [ref=e157]
+            - paragraph [ref=e158]: Stændertorvet 1, Roskilde
+            - paragraph [ref=e159]: Open Until 11:00 PM
+          - generic [ref=e160]:
+            - img [ref=e161]
+            - generic [ref=e163]: "4.4"
+        - generic [ref=e164] [cursor=pointer]:
+          - img "Nordisk Film Biograf Roskilde" [ref=e166]
+          - generic [ref=e167]:
+            - generic [ref=e168]:
+              - img [ref=e169]
+              - generic [ref=e172]: 0.6 km
+            - heading "Nordisk Film Biograf Roskilde" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Ringstedgade 39, Roskilde
+            - paragraph [ref=e175]: Open Until 11:00 PM
+          - generic [ref=e176]:
+            - img [ref=e177]
+            - generic [ref=e179]: "4.0"
+        - generic [ref=e180] [cursor=pointer]:
+          - img "BIG BIO Greve" [ref=e182]
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - img [ref=e185]
+              - generic [ref=e188]: 10.8 km
+            - heading "BIG BIO Greve" [level=3] [ref=e189]
+            - paragraph [ref=e190]: Ventrupparken 12, Greve
+            - paragraph [ref=e191]: Open Until 11:00 PM
+          - generic [ref=e192]:
+            - img [ref=e193]
+            - generic [ref=e195]: "4.5"
+        - generic [ref=e196] [cursor=pointer]:
+          - img "Bio Scala Køge" [ref=e198]
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - img [ref=e201]
+              - generic [ref=e204]: 21.6 km
+            - heading "Bio Scala Køge" [level=3] [ref=e205]
+            - paragraph [ref=e206]: Nørregade 11, Køge
+            - paragraph [ref=e207]: Open Until 11:00 PM
+          - generic [ref=e208]:
+            - img [ref=e209]
+            - generic [ref=e211]: "4.4"
+        - generic [ref=e212] [cursor=pointer]:
+          - img "Nordisk Film Køge" [ref=e214]
+          - generic [ref=e215]:
+            - generic [ref=e216]:
+              - img [ref=e217]
+              - generic [ref=e220]: 21.7 km
+            - heading "Nordisk Film Køge" [level=3] [ref=e221]
+            - paragraph [ref=e222]: Tangmosevej 103, Køge
+            - paragraph [ref=e223]: Open Until 11:00 PM
+          - generic [ref=e224]:
+            - img [ref=e225]
+            - generic [ref=e227]: "4.2"
+  - contentinfo:
+    - contentinfo [ref=e228]:
+      - navigation [ref=e229]:
+        - link "Home" [ref=e230] [cursor=pointer]:
+          - /url: /
+          - img [ref=e231]
+        - link "Explore" [ref=e233] [cursor=pointer]:
+          - /url: /explore
+          - img [ref=e234]
+        - link "Saved" [ref=e237] [cursor=pointer]:
+          - /url: /saved
+          - img [ref=e238]
+        - link "Profile" [ref=e240] [cursor=pointer]:
+          - /url: /profile
+          - img [ref=e241]
+```

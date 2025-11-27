@@ -53,6 +53,7 @@ export default function ComingSoon() {
                         key={movie.id}
                         to={`/explore/${movie.id}`}
                         className="movie-card"
+                        data-testid="movie-card"
                     >
                         <div className="coming-soon-poster">
                             {movie.poster_path ? (
@@ -65,7 +66,7 @@ export default function ComingSoon() {
                             )}
                         </div>
                         <div className="movie-info">
-                            <h3 className="movie-title">{movie.title}</h3>
+                            <h3 className="movie-title" data-testid="movie-title">{movie.title}</h3>
                             <p className="movie-date">
                                 {new Date(movie.release_date).toLocaleDateString('en-US', {
                                     month: 'long',

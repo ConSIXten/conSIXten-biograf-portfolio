@@ -54,6 +54,7 @@ export default function Login() {
                             placeholder="Enter your username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            data-testid="email-input"
                         />
                     </div>
 
@@ -68,10 +69,11 @@ export default function Login() {
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            data-testid="password-input"
                         />
                     </div>
 
-                    <button type="submit" className="auth-button bg-blue text-white font-bold">
+                    <button type="submit" className="auth-button bg-blue text-white font-bold" data-testid="login-button">
                         Login
                     </button>
                 </form>

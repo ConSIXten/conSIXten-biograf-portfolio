@@ -65,6 +65,7 @@ export default function Register() {
                             placeholder="Choose a username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            data-testid="name-input"
                         />
                     </div>
 

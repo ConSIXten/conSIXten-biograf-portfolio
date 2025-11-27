@@ -152,14 +152,14 @@ export async function getShowtimes(filters = {}) {
         console.warn('Using mock showtime data as fallback');
         // Return mock data if API fails
         let filteredShowtimes = mockShowtimes;
-        
+
         if (filters.cinema_id) {
             filteredShowtimes = filteredShowtimes.filter(st => st.cinema_id === filters.cinema_id);
         }
         if (filters.movie_id) {
             filteredShowtimes = filteredShowtimes.filter(st => st.movie_id === filters.movie_id);
         }
-        
+
         return filteredShowtimes;
     }
 }// ============================================

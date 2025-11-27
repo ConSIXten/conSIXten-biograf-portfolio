@@ -63,13 +63,14 @@ export default function CinemaNearYou() {
     const displayedCinemas = showAll ? cinemas : cinemas.slice(0, 5);
 
     return (
-        <section className="cinema-near-you">
+        <section className="cinema-near-you" data-testid="cinemas-section">
             <div className="section-header">
                 <h2 className="section-title">Cinema Near You</h2>
                 <button
                     onClick={() => setShowAll(!showAll)}
                     className="see-all-link"
                     style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                    data-testid="see-all-button"
                 >
                     {showAll ? 'Show less' : 'See all'}
                 </button>
@@ -88,7 +89,7 @@ export default function CinemaNearYou() {
                     }
 
                     return (
-                        <div key={cinema.id} className="cinema-card">
+                        <div key={cinema.id} className="cinema-card" data-testid="cinema-card">
                             <div className="cinema-logo">
                                 {imageUrl ? (
                                     <img
@@ -122,7 +123,8 @@ export default function CinemaNearYou() {
                                     <span className="distance">{cinema.distance}</span>
                                 </div>
 
-                                <h3 className="cinema-name">{cinema.name}</h3>
+                                <h3 className="cinema-name" data-testid="cinema-name">{cinema.name}</h3>
+                                <p className="cinema-address" data-testid="cinema-address">{cinema.address}, {cinema.city}</p>
 
                                 <p className="cinema-status">{cinema.status} {cinema.closingTime}</p>
                             </div>
@@ -131,7 +133,7 @@ export default function CinemaNearYou() {
                                 <svg className="star-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10 1L12.5 7.5H19L14 11.5L16.5 18L10 14L3.5 18L6 11.5L1 7.5H7.5L10 1Z" fill="#FFA500" stroke="#FFA500" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                                <span className="rating-value">{cinema.rating.toFixed(1)}</span>
+                                <span className="rating-value" data-testid="cinema-rating">{cinema.rating.toFixed(1)}</span>
                             </div>
                         </div>
                     );

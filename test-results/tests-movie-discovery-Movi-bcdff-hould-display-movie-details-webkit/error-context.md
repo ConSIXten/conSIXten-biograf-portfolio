@@ -1,0 +1,184 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - button "Go back" [ref=e6] [cursor=pointer]:
+          - img [ref=e7]
+        - heading "Explore Movie" [level=1] [ref=e9]
+        - button "Search" [ref=e10] [cursor=pointer]:
+          - img [ref=e11]
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - button "Now Showing" [ref=e16] [cursor=pointer]
+      - button "Upcoming" [ref=e17] [cursor=pointer]
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Top Movies" [level=2] [ref=e20]
+        - link "See more" [ref=e21]:
+          - /url: /explore
+      - generic [ref=e22]:
+        - link "The Shadow's Edge The Shadow's Edge" [ref=e23]:
+          - /url: /explore/1419406
+          - img "The Shadow's Edge" [ref=e25]
+          - heading "The Shadow's Edge" [level=3] [ref=e26]
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - img [ref=e30]
+            - img [ref=e32]
+            - img [ref=e34]
+            - img [ref=e36]
+        - link "The Family Plan 2 The Family Plan 2" [ref=e38]:
+          - /url: /explore/1363123
+          - img "The Family Plan 2" [ref=e40]
+          - heading "The Family Plan 2" [level=3] [ref=e41]
+          - generic [ref=e42]:
+            - img [ref=e43]
+            - img [ref=e45]
+            - img [ref=e47]
+            - img [ref=e49]
+            - img [ref=e51]
+        - link "Altered Altered" [ref=e53]:
+          - /url: /explore/1309012
+          - img "Altered" [ref=e55]
+          - heading "Altered" [level=3] [ref=e56]
+          - generic [ref=e57]:
+            - img [ref=e58]
+            - img [ref=e60]
+            - img [ref=e62]
+            - img [ref=e64]
+            - img [ref=e66]
+        - link "Zootopia 2 Zootopia 2" [ref=e68]:
+          - /url: /explore/1084242
+          - img "Zootopia 2" [ref=e70]
+          - heading "Zootopia 2" [level=3] [ref=e71]
+          - generic [ref=e72]:
+            - img [ref=e73]
+            - img [ref=e75]
+            - img [ref=e77]
+            - img [ref=e79]
+            - img [ref=e81]
+        - link "Frankenstein Frankenstein" [ref=e83]:
+          - /url: /explore/1062722
+          - img "Frankenstein" [ref=e85]
+          - heading "Frankenstein" [level=3] [ref=e86]
+          - generic [ref=e87]:
+            - img [ref=e88]
+            - img [ref=e90]
+            - img [ref=e92]
+            - img [ref=e94]
+            - img [ref=e96]
+        - link "A Legend A Legend" [ref=e98]:
+          - /url: /explore/1116465
+          - img "A Legend" [ref=e100]
+          - heading "A Legend" [level=3] [ref=e101]
+          - generic [ref=e102]:
+            - img [ref=e103]
+            - img [ref=e105]
+            - img [ref=e107]
+            - img [ref=e109]
+            - img [ref=e111]
+        - 'link "Wicked: For Good Wicked: For Good" [ref=e113]':
+          - /url: /explore/967941
+          - 'img "Wicked: For Good" [ref=e115]'
+          - 'heading "Wicked: For Good" [level=3] [ref=e116]'
+          - generic [ref=e117]:
+            - img [ref=e118]
+            - img [ref=e120]
+            - img [ref=e122]
+            - img [ref=e124]
+            - img [ref=e126]
+        - link "One Battle After Another One Battle After Another" [ref=e128]:
+          - /url: /explore/1054867
+          - img "One Battle After Another" [ref=e130]
+          - heading "One Battle After Another" [level=3] [ref=e131]
+          - generic [ref=e132]:
+            - img [ref=e133]
+            - img [ref=e135]
+            - img [ref=e137]
+            - img [ref=e139]
+            - img [ref=e141]
+        - 'link "Predator: Badlands Predator: Badlands" [ref=e143]':
+          - /url: /explore/1242898
+          - 'img "Predator: Badlands" [ref=e145]'
+          - 'heading "Predator: Badlands" [level=3] [ref=e146]'
+          - generic [ref=e147]:
+            - img [ref=e148]
+            - img [ref=e150]
+            - img [ref=e152]
+            - img [ref=e154]
+            - img [ref=e156]
+        - 'link "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins- JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-" [ref=e158]':
+          - /url: /explore/1539104
+          - 'img "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-" [ref=e160]'
+          - 'heading "JUJUTSU KAISEN: Execution -Shibuya Incident x The Culling Game Begins-" [level=3] [ref=e161]'
+          - generic [ref=e162]:
+            - img [ref=e163]
+            - img [ref=e165]
+            - img [ref=e167]
+            - img [ref=e169]
+            - img [ref=e171]
+    - generic [ref=e173]:
+      - generic [ref=e174]:
+        - heading "Recommended" [level=2] [ref=e175]
+        - link "See more" [ref=e176]:
+          - /url: /explore
+      - generic [ref=e177]:
+        - link "The Shawshank Redemption The Shawshank Redemption" [ref=e178]:
+          - /url: /explore/278
+          - img "The Shawshank Redemption" [ref=e180]
+          - heading "The Shawshank Redemption" [level=3] [ref=e181]
+        - link "The Godfather The Godfather" [ref=e182]:
+          - /url: /explore/238
+          - img "The Godfather" [ref=e184]
+          - heading "The Godfather" [level=3] [ref=e185]
+        - link "The Godfather Part II The Godfather Part II" [ref=e186]:
+          - /url: /explore/240
+          - img "The Godfather Part II" [ref=e188]
+          - heading "The Godfather Part II" [level=3] [ref=e189]
+        - link "Schindler's List Schindler's List" [ref=e190]:
+          - /url: /explore/424
+          - img "Schindler's List" [ref=e192]
+          - heading "Schindler's List" [level=3] [ref=e193]
+        - link "12 Angry Men 12 Angry Men" [ref=e194]:
+          - /url: /explore/389
+          - img "12 Angry Men" [ref=e196]
+          - heading "12 Angry Men" [level=3] [ref=e197]
+        - link "Spirited Away Spirited Away" [ref=e198]:
+          - /url: /explore/129
+          - img "Spirited Away" [ref=e200]
+          - heading "Spirited Away" [level=3] [ref=e201]
+        - link "The Dark Knight The Dark Knight" [ref=e202]:
+          - /url: /explore/155
+          - img "The Dark Knight" [ref=e204]
+          - heading "The Dark Knight" [level=3] [ref=e205]
+        - link "Dilwale Dulhania Le Jayenge Dilwale Dulhania Le Jayenge" [ref=e206]:
+          - /url: /explore/19404
+          - img "Dilwale Dulhania Le Jayenge" [ref=e208]
+          - heading "Dilwale Dulhania Le Jayenge" [level=3] [ref=e209]
+        - link "The Green Mile The Green Mile" [ref=e210]:
+          - /url: /explore/497
+          - img "The Green Mile" [ref=e212]
+          - heading "The Green Mile" [level=3] [ref=e213]
+        - link "Parasite Parasite" [ref=e214]:
+          - /url: /explore/496243
+          - img "Parasite" [ref=e216]
+          - heading "Parasite" [level=3] [ref=e217]
+  - contentinfo:
+    - contentinfo [ref=e218]:
+      - navigation [ref=e219]:
+        - link "Home" [ref=e220] [cursor=pointer]:
+          - /url: /
+          - img [ref=e221]
+        - link "Explore" [ref=e223] [cursor=pointer]:
+          - /url: /explore
+          - img [ref=e224]
+        - link "Saved" [ref=e227] [cursor=pointer]:
+          - /url: /saved
+          - img [ref=e228]
+        - link "Profile" [ref=e230] [cursor=pointer]:
+          - /url: /profile
+          - img [ref=e231]
+```
