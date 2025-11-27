@@ -7,15 +7,21 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (isLoading) return; // Prevent multiple submissions
+
         setError('');
+        setIsLoading(true);
 
         if (!username || !password) {
             setError('Please fill in all fields');
+            setIsLoading(false);
             return;
         }
 
@@ -26,9 +32,9 @@ export default function Login() {
         } else {
             setError(result.message);
         }
-    };
 
-    return (
+        setIsLoading(false);
+    }; return (
         <div className="auth-page">
             <div className="auth-container">
                 <div className="auth-header">
@@ -73,8 +79,13 @@ export default function Login() {
                         />
                     </div>
 
-                    <button type="submit" className="auth-button bg-blue text-white font-bold" data-testid="login-button">
-                        Login
+                    <button
+                        type="submit"
+                        className="auth-button bg-blue text-white font-bold"
+                        data-testid="login-button"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Logging in...' : 'Login'}
                     </button>
                 </form>
 

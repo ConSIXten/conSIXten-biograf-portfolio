@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { getTopRatedMovies, getImageUrl } from '../../utilities/movieApi';
+import MovieCard from '../MovieCard';
+import { getTopRatedMovies } from '../../utilities/movieApi';
 import './RecommendedMovies.css';
 
 export default function RecommendedMovies() {
@@ -36,21 +37,11 @@ export default function RecommendedMovies() {
 
             <div className="recommended-movies-scroll">
                 {movies.map((movie) => (
-                    <Link
+                    <MovieCard
                         key={movie.id}
-                        to={`/explore/${movie.id}`}
-                        className="recommended-movie-card"
-                    >
-                        <div className="recommended-movie-poster bg-dark-secondary">
-                            <img
-                                src={getImageUrl(movie.poster_path, 'w500')}
-                                alt={movie.title}
-                            />
-                        </div>
-                        <h3 className="recommended-movie-title text-white fs-base font-bold mt-2">
-                            {movie.title}
-                        </h3>
-                    </Link>
+                        movie={movie}
+                        variant="recommended"
+                    />
                 ))}
             </div>
         </section>

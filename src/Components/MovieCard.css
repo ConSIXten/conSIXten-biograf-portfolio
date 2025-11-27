@@ -1,0 +1,114 @@
+/* ============================================
+   MOVIE CARD COMPONENT - REUSABLE & OPTIMIZED
+   ============================================ */
+
+.movie-card {
+    text-decoration: none;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Movie Poster */
+.movie-poster {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.movie-poster:hover img {
+    transform: scale(1.05);
+}
+
+/* No Image Placeholder */
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2a2d3a 0%, #3a3d4a 100%);
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Movie Info */
+.movie-info {
+    padding: 0 0.25rem;
+}
+
+.movie-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+/* Variants */
+.movie-poster.top {
+    aspect-ratio: 2/3;
+    border-radius: 20px;
+}
+
+.movie-poster.recommended {
+    aspect-ratio: 2/3;
+    border-radius: 20px;
+}
+
+.movie-poster.saved {
+    aspect-ratio: 2/3;
+    border-radius: 24px;
+}
+
+.movie-title.top {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.movie-title.recommended {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 768px) {
+    .movie-poster {
+        border-radius: 20px;
+    }
+
+    .movie-card:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .movie-poster {
+        border-radius: 24px;
+    }
+}
+
+/* Loading States */
+.movie-card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.movie-card.loading .movie-poster img {
+    filter: blur(2px);
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import StarRating from '../StarRating';
-import { getNowPlayingMovies, getUpcomingMovies, getImageUrl } from '../../utilities/movieApi';
+import MovieCard from '../MovieCard';
+import { getNowPlayingMovies, getUpcomingMovies } from '../../utilities/movieApi';
 import './TopMovies.css';
 
 export default function TopMovies({ type = 'now-showing' }) {
@@ -41,23 +41,11 @@ export default function TopMovies({ type = 'now-showing' }) {
 
             <div className="top-movies-scroll">
                 {movies.map((movie) => (
-                    <Link
+                    <MovieCard
                         key={movie.id}
-                        to={`/explore/${movie.id}`}
-                        className="top-movie-card"
-                        data-testid="movie-card"
-                    >
-                        <div className="top-movie-poster bg-dark-secondary">
-                            <img
-                                src={getImageUrl(movie.poster_path, 'w500')}
-                                alt={movie.title}
-                            />
-                        </div>
-                        <h3 className="movie-title text-white fs-base font-bold mt-2 mb-1">
-                            {movie.title}
-                        </h3>
-                        <StarRating rating={movie.vote_average / 2} />
-                    </Link>
+                        movie={movie}
+                        variant="top"
+                    />
                 ))}
             </div>
         </section>

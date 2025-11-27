@@ -8,25 +8,33 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { register } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (isLoading) return; // Prevent multiple submissions
+
         setError('');
+        setIsLoading(true);
 
         if (!username || !password || !confirmPassword) {
             setError('Please fill in all fields');
+            setIsLoading(false);
             return;
         }
 
         if (password.length < 6) {
             setError('Password must be at least 6 characters');
+            setIsLoading(false);
             return;
         }
 
         if (password !== confirmPassword) {
             setError('Passwords do not match');
+            setIsLoading(false);
             return;
         }
 
@@ -37,9 +45,9 @@ export default function Register() {
         } else {
             setError(result.message);
         }
-    };
 
-    return (
+        setIsLoading(false);
+    }; return (
         <div className="auth-page">
             <div className="auth-container">
                 <div className="auth-header">
@@ -99,8 +107,13 @@ export default function Register() {
                         />
                     </div>
 
-                    <button type="submit" className="auth-button bg-blue text-white font-bold" data-testid="register-button">
-                        Register
+                    <button
+                        type="submit"
+                        className="auth-button bg-blue text-white font-bold"
+                        data-testid="register-button"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Registering...' : 'Register'}
                     </button>
                 </form>
 

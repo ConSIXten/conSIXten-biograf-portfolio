@@ -21,6 +21,17 @@
     padding: 2rem;
 }
 
+@media screen and (min-width: 48rem) {
+    .empty-state {
+        padding-right: 32rem;
+
+    }
+    }
+    
+
+
+
+
 .empty-state svg {
     color: #8e95a9;
 }
