@@ -4,7 +4,7 @@ import './HomePageHeader.css';
 import SearchBar from '../SearchBar';
 
 export default function HomePageHeader() {
-    const { currentUser } = useAuth();
+    const { currentUser, demoLogin } = useAuth();
     const navigate = useNavigate();
 
     const handleAvatarClick = () => {
@@ -27,9 +27,14 @@ export default function HomePageHeader() {
                     ) : (
                         <>
                             <p className="welcome-text">Get started here</p>
-                            <button className="login-button bg-blue text-white font-bold" onClick={handleAvatarClick}>
-                                Go to Log-In
-                            </button>
+                            <div className="auth-buttons">
+                                <button className="login-button bg-blue text-white font-bold" onClick={handleAvatarClick}>
+                                    Go to Log-In
+                                </button>
+                                <button className="demo-button bg-green text-white font-bold" onClick={demoLogin}>
+                                    Demo Login
+                                </button>
+                            </div>
                         </>
                     )}
                 </div>

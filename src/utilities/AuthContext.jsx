@@ -73,12 +73,24 @@ export default function AuthProvider({ children }) {
         localStorage.removeItem('currentUser');
     };
 
+    // Demo login for portfolio/demo purposes
+    const demoLogin = () => {
+        const demoUser = {
+            id: 'demo-user',
+            name: 'Demo User',
+            email: 'demo@biograf.local'
+        };
+        setCurrentUser(demoUser);
+        localStorage.setItem('currentUser', JSON.stringify(demoUser));
+    };
+
     const value = {
         currentUser,
         isLoading,
         register,
         login,
-        logout
+        logout,
+        demoLogin
     };
 
     return (
