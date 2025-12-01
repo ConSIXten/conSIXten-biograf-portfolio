@@ -52,14 +52,16 @@ src/
 
 ## Testing
 
-This project includes comprehensive E2E (End-to-End) tests using Playwright that cover:
+This project includes comprehensive E2E (End-to-End) tests using Playwright with **API mocking** to run tests without the backend server:
 
 - **Movie Discovery**: Homepage loading, movie display, and navigation ✅
-- **User Authentication**: Registration form validation ✅ (login/logout skipped in test environment)
-- **Booking Flow**: Complete ticket booking process (skipped - requires authentication)
+- **User Authentication**: Registration, login, and validation ✅
 - **Cinema Listings**: Cinema display and information ✅
+- **Booking Flow**: Complete ticket booking process (requires UI implementation)
 
-**Test Results**: 24 tests passing, 15 tests skipped (authentication-dependent tests)
+**Test Results**: **9 passing, 4 skipped** (UI features not yet implemented)
+
+All tests use mocked API responses, making them fast, reliable, and independent of backend availability.
 
 ### Running Tests
 

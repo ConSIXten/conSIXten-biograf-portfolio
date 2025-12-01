@@ -1,8 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { loginAsDemoUser, waitForMoviesToLoad, selectFirstAvailableShowtime, selectSeats } from '../utils/test-helpers.js';
+import { setupApiMocks } from '../utils/mock-api.js';
 
-test.describe.skip('Booking Flow', () => {
-    test('should complete full booking process', async ({ page }) => {
+test.describe('Booking Flow', () => {
+    // Skipping: Requires showtime selection UI (not yet implemented in details page)
+    test.skip('should complete full booking process', async ({ page }) => {
+        // Setup API mocks
+        await setupApiMocks(page);
         // Login first
         await loginAsDemoUser(page);
 
@@ -45,7 +49,11 @@ test.describe.skip('Booking Flow', () => {
         await expect(page.locator('text=Booking confirmed')).toBeVisible();
     });
 
-    test('should show booking history', async ({ page }) => {
+    // Skipping: Tickets page needs bookings-list data-testid
+    test.skip('should show booking history', async ({ page }) => {
+        // Setup API mocks
+        await setupApiMocks(page);
+        
         // Login first
         await loginAsDemoUser(page);
 
@@ -56,7 +64,11 @@ test.describe.skip('Booking Flow', () => {
         await expect(page.locator('[data-testid="bookings-list"]')).toBeVisible();
     });
 
-    test('should prevent booking when no seats selected', async ({ page }) => {
+    // Skipping: Requires showtime selection UI (not yet implemented in details page)
+    test.skip('should prevent booking when no seats selected', async ({ page }) => {
+        // Setup API mocks
+        await setupApiMocks(page);
+        
         // Login first
         await loginAsDemoUser(page);
 

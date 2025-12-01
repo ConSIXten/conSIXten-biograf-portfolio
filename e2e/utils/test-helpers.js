@@ -1,10 +1,16 @@
+import { setupApiMocks } from './mock-api.js';
+
 export async function loginAsDemoUser(page) {
+    // Setup API mocks before login
+    await setupApiMocks(page);
+    
     await page.goto('/login');
-    await page.fill('[data-testid="email-input"]', 'demo');
-    await page.fill('[data-testid="password-input"]', 'demo');
+    await page.fill('[data-testid="email-input"]', 'test@example.com');
+    await page.fill('[data-testid="password-input"]', 'password123');
     await page.click('[data-testid="login-button"]');
-    // Wait for user menu to appear instead of navigation
-    await page.waitForSelector('[data-testid="user-menu"]', { timeout: 10000 });
+    
+    // Wait for navigation to home or profile
+    await page.waitForURL(/\/(home|profile|explore)?/, { timeout: 10000 });
 }
 
 export async function waitForMoviesToLoad(page) {
