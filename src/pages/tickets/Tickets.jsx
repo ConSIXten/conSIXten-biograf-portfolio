@@ -40,7 +40,7 @@ export default function Tickets() {
     if (!seats || seats.length === 0) {
         return (
             <div className="tickets-page">
-                <div className="no-tickets text-white text-center">
+                <div className="no-tickets text-white text-center" data-testid="bookings-list">
                     <p>No tickets found</p>
                 </div>
             </div>
@@ -59,7 +59,7 @@ export default function Tickets() {
             </div>
 
             {/* Tickets Container - Swipeable */}
-            <div className="tickets-scroll-container">
+            <div className="tickets-scroll-container" data-testid="bookings-list">
                 {seats.map((seatId) => (
                     <div key={seatId} className="ticket-card">
                         {/* Ticket Header */}

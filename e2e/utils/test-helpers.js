@@ -22,7 +22,7 @@ export async function selectFirstAvailableShowtime(page) {
     await showtimeButton.click();
 }
 
-export async function selectSeats(page, seatIds = ['A1', 'A2']) {
+export async function selectSeats(page, seatIds = ['0-0', '0-1']) {
     for (const seatId of seatIds) {
         await page.click(`[data-testid="seat-${seatId}"]`);
     }

@@ -230,6 +230,7 @@ export default function Booking() {
                                         }`}
                                     onClick={() => handleSeatClick(seatId)}
                                     disabled={status === 'reserved'}
+                                    data-testid={`seat-${seatId}`}
                                 />
                             );
                         })}
@@ -258,6 +259,7 @@ export default function Booking() {
                 className="checkout-button bg-blue text-white font-bold"
                 onClick={handleCheckout}
                 disabled={selectedSeats.length === 0}
+                data-testid="book-button"
             >
                 Checkout
             </button>

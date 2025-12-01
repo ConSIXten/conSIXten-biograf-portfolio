@@ -106,6 +106,7 @@ export default function Payment() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="example@gmail.com"
                         required
+                        data-testid="email-input"
                     />
                 </div>
 
@@ -118,6 +119,7 @@ export default function Payment() {
                         onChange={(e) => setCardholderName(e.target.value)}
                         placeholder="John Doe"
                         required
+                        data-testid="name"
                     />
                 </div>
 
@@ -130,6 +132,7 @@ export default function Payment() {
                         onChange={handleCardNumberChange}
                         placeholder="1234 5678 9012 3456"
                         required
+                        data-testid="card-number"
                     />
                 </div>
 
@@ -143,6 +146,7 @@ export default function Payment() {
                             onChange={(e) => setExpiryDate(e.target.value)}
                             placeholder="MM/YY"
                             required
+                            data-testid="expiry"
                         />
                     </div>
 
@@ -155,11 +159,12 @@ export default function Payment() {
                             onChange={handleCvvChange}
                             placeholder="123"
                             required
+                            data-testid="cvv"
                         />
                     </div>
                 </div>
 
-                <button type="submit" className="pay-button bg-blue text-white font-bold">
+                <button type="submit" className="pay-button bg-blue text-white font-bold" data-testid="pay-button">
                     <span>Pay Now</span>
                     <span className="divider"></span>
                     <span>${totalPrice.toFixed(1)}</span>

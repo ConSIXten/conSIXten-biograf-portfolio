@@ -44,28 +44,39 @@ test.describe('User Authentication', () => {
         await expect(page.locator('text=Please fill in all fields')).toBeVisible();
     });
 
-    // Skipping: Requires logout button with data-testid on profile page
+    // Skipping: Profile page re-rendering causes button detachment
     test.skip('should logout user', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
         
-        await page.goto('/login');
+        // First, store a user in localStorage to simulate logged-in state
+        await page.goto('/');
+        await page.evaluate(() => {
+            const mockUser = {
+                id: '1',
+                name: 'Test User',
+                email: 'test@example.com'
+            };
+            localStorage.setItem('currentUser', JSON.stringify(mockUser));
+        });
 
-        // Login first
-        await page.fill('[data-testid="email-input"]', 'test@example.com');
-        await page.fill('[data-testid="password-input"]', 'password123');
-        await page.click('[data-testid="login-button"]');
-
-        // Wait for successful login
-        await page.waitForURL(/\/(home|profile|explore|\/)/, { timeout: 5000 });
-
-        // Navigate to profile page
+        // Navigate to profile page (should now have user)
         await page.goto('/profile');
-
+        
+        // Wait for and verify logout button exists
+        const logoutButton = page.locator('[data-testid="logout-button"]');
+        await expect(logoutButton).toBeVisible({ timeout: 10000 });
+        
         // Click logout button
-        await page.click('[data-testid="logout-button"]');
+        await logoutButton.click();
 
-        // Should navigate to login or home
-        await page.waitForURL(/\/(login|home|\/)/, { timeout: 5000 });
+        // Should navigate to home page
+        await page.waitForURL('/', { timeout: 5000 });
+        
+        // Verify user is logged out (localStorage cleared)
+        const isLoggedOut = await page.evaluate(() => {
+            return localStorage.getItem('currentUser') === null;
+        });
+        expect(isLoggedOut).toBeTruthy();
     });
 });

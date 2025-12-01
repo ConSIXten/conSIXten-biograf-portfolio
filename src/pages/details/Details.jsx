@@ -117,6 +117,7 @@ export default function Details() {
                     <button
                         className="book-ticket-btn bg-blue text-white font-bold"
                         onClick={() => navigate(`/booking/${movie.id}`)}
+                        data-testid="showtime-button"
                     >
                         Book Ticket
                     </button>
