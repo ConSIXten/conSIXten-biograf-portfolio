@@ -15,15 +15,15 @@ import { useAuth } from '../../utilities/useAuth';
 import './Profile.css';
 
 export default function Profile() {
-    const { currentUser, logout } = useAuth();
+    const { currentUser, logout, isLoading } = useAuth();
     const navigate = useNavigate();
 
-    // Redirect to login if not authenticated
+    // Redirect to login if not authenticated (but wait for loading to finish)
     useEffect(() => {
-        if (!currentUser) {
+        if (!isLoading && !currentUser) {
             navigate('/login', { replace: true });
         }
-    }, [currentUser, navigate]);
+    }, [currentUser, isLoading, navigate]);
 
     // Calculate user level based on points/movies watched
     const getUserLevel = () => {

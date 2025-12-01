@@ -5,7 +5,7 @@ test.describe('Cinema Listings', () => {
     test('should display cinemas near you', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/');
 
         // Should show cinema listings section
@@ -29,7 +29,7 @@ test.describe('Cinema Listings', () => {
     test('should display cinema information', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/');
 
         // Wait for cinemas to load
@@ -50,7 +50,7 @@ test.describe('Cinema Listings', () => {
     test('should filter cinemas by location', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/');
 
         // Wait for cinemas to load

@@ -6,7 +6,7 @@ test.describe('Movie Discovery', () => {
     test('should load homepage and display movies', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/');
 
         // Check if main elements are present - look for welcome text or login button
@@ -24,7 +24,7 @@ test.describe('Movie Discovery', () => {
     test('should navigate to explore page', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/');
 
         // Click explore link/button
@@ -40,7 +40,7 @@ test.describe('Movie Discovery', () => {
     test('should display movie details', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         await page.goto('/explore');
 
         await waitForMoviesToLoad(page);

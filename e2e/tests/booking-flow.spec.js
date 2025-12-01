@@ -3,8 +3,7 @@ import { loginAsDemoUser, waitForMoviesToLoad, selectFirstAvailableShowtime, sel
 import { setupApiMocks } from '../utils/mock-api.js';
 
 test.describe('Booking Flow', () => {
-    // Skipping: Payment modal timing issue - complex async flow
-    test.skip('should complete full booking process', async ({ page }) => {
+    test('should complete full booking process', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
         // Login first
@@ -28,6 +27,9 @@ test.describe('Booking Flow', () => {
         // Should navigate to booking page
         await expect(page).toHaveURL(/\/booking\/\d+/);
 
+        // Wait for booking page to load
+        await page.waitForLoadState('networkidle');
+
         // Select seats (row-seat format: 0-0, 0-1)
         await selectSeats(page, ['0-0', '0-1']);
 
@@ -37,12 +39,17 @@ test.describe('Booking Flow', () => {
         // Should navigate to payment page
         await expect(page).toHaveURL('/payment');
 
-        // Complete payment
+        // Wait for payment page to load
+        await page.waitForLoadState('networkidle');
+
+        // Complete payment form
+        await page.fill('[data-testid="email-input"]', 'test@example.com');
+        await page.fill('[data-testid="name"]', 'Test User');
         await page.fill('[data-testid="card-number"]', '4111111111111111');
         await page.fill('[data-testid="expiry"]', '12/25');
         await page.fill('[data-testid="cvv"]', '123');
-        await page.fill('[data-testid="name"]', 'Test User');
 
+        // Submit payment
         await page.click('[data-testid="pay-button"]');
 
         // Verify success modal appears
@@ -52,7 +59,7 @@ test.describe('Booking Flow', () => {
     test('should show booking history', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         // Login first
         await loginAsDemoUser(page);
 
@@ -66,7 +73,7 @@ test.describe('Booking Flow', () => {
     test('should prevent booking when no seats selected', async ({ page }) => {
         // Setup API mocks
         await setupApiMocks(page);
-        
+
         // Login first
         await loginAsDemoUser(page);
 

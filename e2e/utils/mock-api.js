@@ -15,7 +15,7 @@ export const mockApiResponses = {
             token: 'mock-jwt-token-123'
         }
     },
-    
+
     register: {
         success: true,
         message: 'User registered successfully',
