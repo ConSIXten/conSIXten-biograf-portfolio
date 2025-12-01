@@ -1,4 +1,4 @@
-/* Recommended Movies Section */
+/* ===== Recommended Movies Section ===== */
 .recommended-movies-section {
     grid-column: fullw;
     padding: 1.5rem 0 1.5rem 1.5rem;
@@ -12,7 +12,7 @@
     padding-right: 1.5rem;
 }
 
-/* Recommended Movies Scroll - Swipeable */
+/* ===== Recommended Movies Scroll - Swipeable ===== */
 .recommended-movies-scroll {
     display: flex;
     gap: 1rem;
@@ -22,44 +22,61 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
+    padding-left: 1.5rem;   /* side padding before first card */
+    padding-right: 1.5rem;  /* side padding after last card */
+    align-items: flex-start; /* prevents stretching */
 }
 
 .recommended-movies-scroll::after {
     content: '';
     flex-shrink: 0;
-    width: 0.5rem;
+    width: 1.5rem; /* spacing at the end of scroll */
 }
 
 .recommended-movies-scroll::-webkit-scrollbar {
     display: none;
 }
 
-.recommended-movie-card {
+/* ===== MovieCard wrapper for recommended variant ===== */
+.recommended-movies-scroll .movie-card.recommended {
     flex-shrink: 0;
+    width: 150px;      /* card width */
+    min-width: 150px;
+    box-sizing: border-box;
     scroll-snap-align: start;
     scroll-snap-stop: always;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.recommended-movie-poster {
-    width: 120px;
-    height: 190px;
+/* Poster wrapper */
+.recommended-movies-scroll .movie-card.recommended .movie-poster {
+    width: 150px;
+    height: 225px;
     border-radius: 16px;
     overflow: hidden;
+    display: block;
 }
 
-.recommended-movie-poster img {
+/* Poster image */
+.recommended-movies-scroll .movie-card.recommended .movie-poster img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.recommended-movie-title {
-    width: 120px;
+/* Movie title */
+.recommended-movies-scroll .movie-card.recommended .movie-title {
+    width: 150px;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: white;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-clamp: 2;
     -webkit-box-orient: vertical;
 }
